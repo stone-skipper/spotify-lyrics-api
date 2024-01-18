@@ -50,11 +50,11 @@ function make_response($response, $format)
     global $spotify;
     $decodedResponse = json_decode($response, true);
 
-    // Check if the decoded response is an array and has the 'lyrics' key
-    if (!is_array($decodedResponse) || !isset($decodedResponse['lyrics'])) {
+    // Check if json_decode was successful and 'lyrics' key exists
+    if ($decodedResponse === null || !isset($decodedResponse['lyrics'])) {
         http_response_code(404);
         echo json_encode(["error" => true, "message" => "lyrics for this track are not available on Spotify!"]);
-        return;
+        return; // Exit the function after sending the response
     }
 
     $temp = $decodedResponse['lyrics'];
