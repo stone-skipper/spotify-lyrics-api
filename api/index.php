@@ -28,23 +28,6 @@ $spotify->checkTokenExpire();
 $reponse = $spotify -> getLyrics(track_id: $trackid);
 echo make_reponse($reponse, $format);
 
-// function make_reponse($response, $format)
-// {
-// 	global $spotify;
-// 	$temp = json_decode($response, true)['lyrics'];
-// 	if (!$temp || !is_array($temp)) {
-// 		http_response_code(404);
-// 		return json_encode(["error" => true, "message" => "lyrics for this track is not available on spotify!"]);
-// 	}
-// 	if ($format == 'lrc') {
-// 		$lines = $spotify -> getLrcLyrics($temp["lines"]);
-// 		$response = ["error" => false, "syncType" => $temp["syncType"], "lines" => $lines];
-// 	} else {
-// 		$response = ["error" => false, "syncType" => $temp["syncType"], "lines" => $temp["lines"]];
-// 	}
-// 	return json_encode($response);
-// }
-
 function make_reponse($response, $format)
 {
     global $spotify;
