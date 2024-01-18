@@ -32,7 +32,7 @@ function make_reponse($response, $format)
 {
 	global $spotify;
 	$temp = json_decode($response, true)['lyrics'];
-	if (!$temp) {
+	if (!$temp || !is_array($temp)) {
 		http_response_code(404);
 		return json_encode(["error" => true, "message" => "lyrics for this track is not available on spotify!"]);
 	}
