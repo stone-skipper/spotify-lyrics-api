@@ -45,7 +45,7 @@ echo make_reponse($reponse, $format);
 // 	return json_encode($response);
 // }
 
-function make_response($response, $format)
+function make_reponse($response, $format)
 {
     global $spotify;
     $decodedResponse = json_decode($response, true);
